@@ -20,9 +20,7 @@ resource "aws_instance" "net" {
     instance_type = "t2.micro"
   
 }
-output "bucket_name" {
-  value = aws_s3_bucket.t12345_state.bucket
-}
+
 resource "aws_instance" "net123" {
     ami = "ami-04e49d62cf88738f1"
     instance_type = "t2.micro"
