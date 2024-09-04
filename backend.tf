@@ -3,7 +3,7 @@
 #     bucket         = "kccbuck"
 #     key            = "terraform/state.tfstate"
 #     region         = "eu-west-1"
-#     dynamodb_table = "kclk"
+#     dynamodb_table = "kclcck"
 #     encrypt        = true
 #   }
 # }

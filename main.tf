@@ -9,7 +9,7 @@ resource "aws_s3_bucket" "t123_state" {
 }
 
 resource "aws_dynamodb_table" "tlock" {
-  name           = "kclk"
+  name           = "kclcck"
   hash_key        = "LockID"
   read_capacity   = 1
   write_capacity  = 1
