@@ -3,13 +3,13 @@ provider "aws" {
   region = "eu-west-1"
 }
 
-resource "aws_s3_bucket" "t1234_state" {
-  bucket = "nobuck"
+resource "aws_s3_bucket" "t12345_state" {
+  bucket = "nobuckk"
   acl    = "private"
 }
 
 resource "aws_dynamodb_table" "ttlock" {
-  name           = "nolock"
+  name           = "noolock"
   hash_key        = "LockID"
   read_capacity   = 1
   write_capacity  = 1
@@ -26,5 +26,5 @@ resource "aws_instance" "newinnn3t" {
 }
 
 output "bucket_name" {
-  value = aws_s3_bucket.t1234_state.bucket
+  value = aws_s3_bucket.t12345_state.bucket
 }

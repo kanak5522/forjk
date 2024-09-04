@@ -1,9 +1,9 @@
 # terraform {
 #   backend "s3" {
-#     bucket         = "nobuck"
+#     bucket         = "nobuckk"
 #     key            = "terraform/state.tfstate"
 #     region         = "eu-west-1"
-#     dynamodb_table = "nolock"
+#     dynamodb_table = "noolock"
 #     encrypt        = true
 #   }
 # }
