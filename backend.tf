@@ -1,3 +1,4 @@
+
  terraform {
    backend "s3" {
      bucket         = "nobuckk"
@@ -7,3 +8,4 @@
      encrypt        = true
    }
  }
+
