@@ -4,7 +4,7 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "t123_state" {
-  bucket = "kc-buck"
+  bucket = "kccbuck"
   acl    = "private"
 }
 
