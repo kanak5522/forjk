@@ -26,5 +26,5 @@ resource "aws_instance" "newinnnt" {
 }
 
 output "bucket_name" {
-  value = aws_s3_bucket.tlock.bucket
+  value = aws_s3_bucket.t123_state.bucket
 }
