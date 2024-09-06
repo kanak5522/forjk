@@ -6,13 +6,14 @@ pipeline {
         GIT_CREDENTIALS_ID = 'knkgithub'
     }
 
-    stages {
+     stages {
         stage('Checkout') {
             steps {
-                git credentialsId: "${knkgithub}", url: 'https://github.com/kanak5522/forjk.git'
+                withCredentials([usernamePassword(credentialsId: 'knkgithub', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
+                    git url: 'https://github.com/kanak5522/forjk.git', credentialsId: 'knkgithub'
+                }
             }
-        }
-
+      
         stage('Terraform Init') {
             steps {
                 withAWS(credentials: "${knkaws}") {
