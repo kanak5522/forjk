@@ -1,22 +1,21 @@
 pipeline {
     agent any
-
+    
     environment {
-        AWS_CREDENTIALS_ID = 'knkaws'
-        GIT_CREDENTIALS_ID = 'knkgithub'
+        AWS_ACCESS_KEY_ID = credentials(Acesskeyidknk)
+        AWS_SECRET_ACCESS_KEY = credentials(secretkeyknk)
     }
 
-     stages {
+    stages {
         stage('Checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'knkgithub', usernameVariable: 'GIT_USER', passwordVariable: 'GIT_PASS')]) {
-                    git url: 'https://github.com/kanak5522/forjk.git', credentialsId: 'knkgithub'
-                }
+                checkout scm
             }
-      
+        }
+
         stage('Terraform Init') {
             steps {
-                withAWS(credentials: "${knkaws}") {
+                script {
                     sh 'terraform init'
                 }
             }
@@ -24,7 +23,7 @@ pipeline {
 
         stage('Terraform Plan') {
             steps {
-                withAWS(credentials: "${knkaws}") {
+                script {
                     sh 'terraform plan'
                 }
             }
@@ -32,8 +31,8 @@ pipeline {
 
         stage('Terraform Apply') {
             steps {
-                input 'Approve Terraform Apply?'
-                withAWS(credentials: "${knkaws}") {
+                input 'Approve Terraform Apply?' // Manual approval step
+                script {
                     sh 'terraform apply -auto-approve'
                 }
             }
@@ -41,9 +40,16 @@ pipeline {
     }
 
     post {
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed.'
+        }
         always {
-            archiveArtifacts artifacts: '**/terraform.tfstate'
             cleanWs()
         }
     }
 }
+
+
